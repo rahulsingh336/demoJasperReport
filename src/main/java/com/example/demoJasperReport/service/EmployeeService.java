@@ -21,7 +21,8 @@ public class EmployeeService{
         // Creating a list of employees using the "faker" object.
         for(int count=0; count<21; count++) {
             employees.add(new Employee(random.nextInt(30 + 1), faker.name().fullName(),
-                    faker.job().title(), faker.job().field()));
+                    faker.job().title(), faker.job().field(), String.valueOf(faker.number().numberBetween(1000, 100000)),
+                    faker.job().seniority()));
         }
         return employees;
     }

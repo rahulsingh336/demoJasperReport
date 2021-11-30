@@ -73,7 +73,7 @@ public class EmployeeController {
     // Method to create the pdf file using the employee list datasource.
     private JasperPrint createPdfReport(final List<Employee> employees) throws JRException {
         // Fetching the .jrxml file from the resources folder.
-        final InputStream stream = this.getClass().getResourceAsStream("/report.jrxml");
+        final InputStream stream = this.getClass().getResourceAsStream("/report/Blank_A4.jrxml");
 
         // Compile the Jasper report from .jrxml to .japser
         final JasperReport report = JasperCompileManager.compileReport(stream);
@@ -83,7 +83,7 @@ public class EmployeeController {
 
         // Adding the additional parameters to the pdf.
         final Map<String, Object> parameters = new HashMap<>();
-        parameters.put("createdBy", "rs");
+        parameters.put("CollectionBeanParam", source);
 
         // Filling the report with the employee data and additional parameters information.
        return JasperFillManager.fillReport(report, parameters, source);
